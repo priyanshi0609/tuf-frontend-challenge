@@ -1,26 +1,136 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cal-blue: #1AACEC;
+  --cal-blue-dark: #0E8DC4;
+  --cal-blue-deeper: #0A6FA0;
+  --cal-blue-light: #E8F7FD;
+  --cal-accent: #FF6B6B;
+  --cal-range: rgba(26, 172, 236, 0.12);
+  --cal-paper: #FAFAF8;
+  --cal-ring: #D4D4CF;
+  --cal-line: #E8E8E4;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --cal-paper: #1A1A1E;
+  --cal-ring: #3A3A42;
+  --cal-line: #2A2A32;
+  --cal-blue-light: #0A2535;
+  --cal-range: rgba(26, 172, 236, 0.18);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply font-sans antialiased;
+}
+
+/* Spiral ring animation */
+.ring-hole {
+  animation: ringPop 0.3s ease-out both;
+}
+
+@keyframes ringPop {
+  0% { transform: scaleY(0); }
+  70% { transform: scaleY(1.1); }
+  100% { transform: scaleY(1); }
+}
+
+/* Page flip perspective */
+.calendar-page {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--cal-ring);
+  border-radius: 2px;
+}
+
+/* Date range highlight */
+.day-in-range {
+  background: var(--cal-range) !important;
+  border-radius: 0 !important;
+}
+
+.day-range-start {
+  border-radius: 50% 0 0 50% !important;
+}
+
+.day-range-end {
+  border-radius: 0 50% 50% 0 !important;
+}
+
+.day-single-selected {
+  border-radius: 50% !important;
+}
+
+/* Note line styling */
+.note-line {
+  @apply border-b border-gray-200 dark:border-gray-700 py-1.5 text-sm w-full bg-transparent outline-none resize-none;
+  font-family: 'DM Sans', sans-serif;
+  color: inherit;
+}
+
+.note-line::placeholder {
+  color: #b0b0a8;
+}
+
+/* Tooltip */
+.tooltip {
+  @apply absolute z-50 text-xs bg-gray-900 text-white px-2 py-1 rounded-md whitespace-nowrap;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* Month image gradient overlay */
+.img-overlay {
+  background: linear-gradient(
+    to bottom right,
+    transparent 50%,
+    var(--cal-blue) 50%
+  );
+}
+
+/* Holiday badge */
+.holiday-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--cal-accent);
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+/* Theme transition */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.1s ease;
+}
+
+/* Responsive calendar grid */
+@media (max-width: 640px) {
+  .calendar-day {
+    font-size: 13px;
+    min-height: 36px;
+  }
 }
