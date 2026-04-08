@@ -1,25 +1,14 @@
-# 📅 Wall Calendar Component (React + Next.js)
+## Wall Calendar Component (React + Next.js)
 
-An interactive, responsive **wall calendar UI component** inspired by a physical calendar design.  
-This project demonstrates frontend engineering skills including UI design, state management, responsiveness, and user interaction.
+An interactive and responsive wall calendar UI inspired by real-world calendars.
+Built to showcase frontend skills like UI design, state management, and user interactions.
 
 ---
 
 ## 🚀 Live Demo
-👉 [Add your deployed link here] (Vercel / Netlify)
+👉 https://tuf-frontend-challenge.vercel.app/
 
 ---
-
-## 🎥 Video Demonstration (Required)
-👉 [Add your Loom / YouTube link here]
-
-In the demo, I showcase:
-- Day range selection
-- Notes functionality
-- Responsive behavior (desktop → mobile)
-
----
-
 ## 🧩 Features
 
 ### 🎨 Wall Calendar Aesthetic
