@@ -28,14 +28,6 @@ export default function CalendarHero({ currentDate, isAnimating }: CalendarHeroP
         />
       </div>
 
-      {/* Diagonal blue overlay — bottom right triangle */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(to bottom right, transparent 58%, #1AACEC 58%)',
-        }}
-      />
-
       {/* Top-left blue triangle accent */}
       <div
         className="absolute top-0 left-0"
@@ -57,10 +49,6 @@ export default function CalendarHero({ currentDate, isAnimating }: CalendarHeroP
         </p>
       </div>
 
-      {/* Photo credit */}
-      <div className="absolute bottom-1.5 left-3 text-white/40 text-xs font-sans">
-        © {img.credit} / Unsplash
-      </div>
     </div>
   )
 }

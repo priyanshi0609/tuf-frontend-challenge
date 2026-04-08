@@ -32,7 +32,6 @@ export default function CalendarGrid({
   onDayHover,
 }: CalendarGridProps) {
 
-  // Effective end for range preview
   const effectiveEnd = endDate || hoverDate
 
   return (
@@ -63,16 +62,18 @@ export default function CalendarGrid({
         {days.map((day, idx) => {
           const { date, isCurrentMonth, isToday } = day
           const holiday = getHoliday(date)
+
           const isStart = isRangeStart(date, startDate, effectiveEnd)
           const isEnd = isRangeEnd(date, startDate, effectiveEnd)
           const inRange = isDateInRange(date, startDate, effectiveEnd)
+
           const isSingle = startDate && !effectiveEnd && isSameDay(date, startDate)
           const isSelected = isStart || isEnd
-          const dayOfWeek = idx % 7 // 0=Mon..6=Sun
+
+          const dayOfWeek = idx % 7
           const isSat = dayOfWeek === 5
           const isSun = dayOfWeek === 6
 
-          // Range highlight classes
           let rangeClass = ''
           if (inRange && !isStart && !isEnd) {
             rangeClass = 'day-in-range'
@@ -92,31 +93,48 @@ export default function CalendarGrid({
               }
             >
               <button
-                onClick={() => isCurrentMonth && onDayClick(date)}
+                onClick={() => {
+                  if (!isCurrentMonth) return
+                  onDayClick(date)
+
+                  // ✅ Show holiday on click
+                  if (holiday) {
+                    alert(holiday)
+                  }
+                }}
                 onMouseEnter={() => isCurrentMonth && onDayHover(date)}
                 onMouseLeave={() => onDayHover(null)}
                 className={cn(
-                  'calendar-day relative w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full text-sm font-medium transition-all duration-150 my-0.5',
-                  // Base text color
+                  'calendar-day relative w-8 h-8 sm:w-9 sm:h-9 flex flex-col items-center justify-center rounded-full text-sm font-medium transition-all duration-150 my-0.5',
+
                   !isCurrentMonth && 'text-gray-300 dark:text-gray-700 cursor-default',
+
                   isCurrentMonth && !isSelected && !isToday && [
                     isSat || isSun
                       ? 'text-[#1AACEC] hover:bg-blue-50 dark:hover:bg-blue-950'
                       : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800',
                   ],
-                  // Today ring
+
                   isToday && !isSelected && 'ring-2 ring-[#1AACEC] ring-offset-1 dark:ring-offset-gray-900',
                   isToday && !isSelected && 'text-[#1AACEC] font-bold',
-                  // Selected state
+
                   isSelected && 'bg-[#1AACEC] text-white font-bold hover:bg-[#0E8DC4]',
-                  // Cursor
+
                   !isCurrentMonth ? 'cursor-default' : 'cursor-pointer',
                 )}
                 disabled={!isCurrentMonth}
                 title={holiday || undefined}
                 aria-label={`${format(date, 'PPPP')}${holiday ? ` — ${holiday}` : ''}`}
               >
-                {day.dayNumber}
+                {/* Day Number */}
+                <span>{day.dayNumber}</span>
+
+                {/* ✅ Holiday name (NEW) */}
+                {holiday && isCurrentMonth && (
+                  <span className="text-[8px] leading-none text-rose-500 mt-[1px] truncate w-full text-center">
+                    {holiday}
+                  </span>
+                )}
 
                 {/* Holiday dot */}
                 {holiday && isCurrentMonth && (

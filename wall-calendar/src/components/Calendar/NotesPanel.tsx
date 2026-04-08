@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { format } from 'date-fns'
-import { Plus, Trash2, StickyNote, X } from 'lucide-react'
+import { Plus, Trash2, StickyNote } from 'lucide-react'
 import { Note, saveNotes } from '@/lib/calendarUtils'
 import { cn } from '@/lib/cn'
 
@@ -24,10 +24,8 @@ export default function NotesPanel({
   const [activeTab, setActiveTab] = useState<'month' | 'range'>('month')
   const [input, setInput] = useState('')
 
-  // Month key
   const monthKey = format(currentDate, 'yyyy-MM')
 
-  // Range key
   const rangeKey =
     startDate && endDate
       ? `${format(startDate <= endDate ? startDate : endDate, 'yyyy-MM-dd')}__${format(startDate <= endDate ? endDate : startDate, 'yyyy-MM-dd')}`
@@ -81,7 +79,7 @@ export default function NotesPanel({
         </span>
       </div>
 
-      {/* Tab switcher */}
+      {/* Tabs */}
       <div className="flex gap-1 mb-3 bg-gray-100 dark:bg-gray-800 p-0.5 rounded-lg">
         <button
           onClick={() => setActiveTab('month')}
@@ -94,6 +92,7 @@ export default function NotesPanel({
         >
           {format(currentDate, 'MMMM')}
         </button>
+
         <button
           onClick={() => setActiveTab('range')}
           disabled={!rangeKey}
@@ -130,9 +129,30 @@ export default function NotesPanel({
               className="group flex items-start gap-2 p-2.5 rounded-lg bg-gray-50 dark:bg-gray-800/60 border border-gray-100 dark:border-gray-700/50 hover:border-[#1AACEC]/30 transition-all"
             >
               <div className="w-1 self-stretch rounded-full bg-[#1AACEC] flex-shrink-0 mt-0.5" />
-              <p className="flex-1 text-sm text-gray-700 dark:text-gray-300 leading-snug break-words min-w-0">
-                {note.text}
-              </p>
+              <div className="flex-1 min-w-0">
+                {/* Date Label */}
+                <div className="text-[10px] text-gray-400 dark:text-gray-500 mb-0.5">
+                  {note.dateKey.includes('__')
+                    ? note.dateKey
+                        .split('__')
+                        .map((d) => format(new Date(d), 'MMM d'))
+                        .join(' – ')
+                    : note.dateKey.length === 7
+                    ? format(new Date(note.dateKey + '-01'), 'MMMM yyyy')
+                    : format(new Date(note.dateKey), 'MMM d, yyyy')}
+                </div>
+
+                {/* Note Text */}
+                <p className="text-sm text-gray-700 dark:text-gray-300 leading-snug break-words">
+                  {note.text}
+                </p>
+
+                {/* Optional Created Time */}
+                <div className="text-[9px] text-gray-300 dark:text-gray-600 mt-0.5">
+                  {format(new Date(note.createdAt), 'p')}
+                </div>
+              </div>
+
               <button
                 onClick={() => deleteNote(note.id)}
                 className="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-rose-500 transition-all flex-shrink-0 mt-0.5"
@@ -145,14 +165,14 @@ export default function NotesPanel({
         )}
       </div>
 
-      {/* Divider */}
-      <div className="h-px bg-gray-200 dark:bg-gray-700 my-3" />
+      
 
-      {/* Note input area — styled like lined paper */}
+      {/* Input */}
       <div className="space-y-1.5">
         {[0, 1, 2].map((i) => (
           <div key={i} className="border-b border-gray-200 dark:border-gray-700" style={{ minHeight: '22px' }} />
         ))}
+
         <div className="flex gap-2 items-end mt-2">
           <textarea
             value={input}
@@ -167,6 +187,7 @@ export default function NotesPanel({
             rows={2}
             className="flex-1 text-sm bg-transparent border-none outline-none resize-none text-gray-700 dark:text-gray-300 placeholder-gray-300 dark:placeholder-gray-600 font-sans leading-snug"
           />
+
           <button
             onClick={addNote}
             disabled={!input.trim()}

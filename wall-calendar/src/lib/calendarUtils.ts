@@ -99,19 +99,19 @@ export function getHoliday(date: Date): string | null {
 
 // Hero images for each month (Unsplash)
 export const MONTH_IMAGES: Record<number, { url: string; alt: string; credit: string }> = {
-  0: { url: 'https://images.unsplash.com/photo-1455156218388-5e61b526818b?w=800&q=80', alt: 'Snowy mountain peaks', credit: 'Kalen Emsley' },
-  1: { url: 'https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=800&q=80', alt: 'Cherry blossoms', credit: 'Jay Wennington' },
-  2: { url: 'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=800&q=80', alt: 'Spring meadow', credit: 'Aaron Burden' },
-  3: { url: 'https://images.unsplash.com/photo-1490750967868-88df5691cc3b?w=800&q=80', alt: 'Blooming flowers', credit: 'Annie Spratt' },
-  4: { url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80', alt: 'Mountain landscape', credit: 'Samuel Ferrara' },
-  5: { url: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80', alt: 'Summer beach', credit: 'S Migaj' },
-  6: { url: 'https://images.unsplash.com/photo-1499002238440-d264edd596ec?w=800&q=80', alt: 'Tropical ocean', credit: 'Shifaaz shamoon' },
-  7: { url: 'https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=800&q=80', alt: 'Golden wheat field', credit: 'Ales Krivec' },
-  8: { url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80', alt: 'Autumn forest', credit: 'Luke Stackpoole' },
-  9: { url: 'https://images.unsplash.com/photo-1476820865390-c52aeebb9891?w=800&q=80', alt: 'Fall leaves', credit: 'Chris Lawton' },
-  10: { url: 'https://images.unsplash.com/photo-1418985991508-e47386d96a71?w=800&q=80', alt: 'Misty forest in November', credit: 'Andy Feliciotti' },
-  11: { url: 'https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&q=80', alt: 'Winter snow landscape', credit: 'Aaron Burden' },
-}
+  0:  { url: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&q=80', alt: 'Snow covered mountains in winter', credit: 'eberhard grossgasteiger' },
+  1:  { url: 'https://images.unsplash.com/photo-1519817650390-64a93db511aa?w=1200&q=80', alt: 'Pink cherry blossoms blooming', credit: 'AJ Yorio' },
+  2:  { url: 'https://images.unsplash.com/photo-1490750967868-88df5691cc3b?w=1200&q=80', alt: 'Colorful spring flowers field', credit: 'Annie Spratt' },
+  3:  { url: 'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=1200&q=80', alt: 'Green meadow with sunlight', credit: 'Aaron Burden' },
+  4:  { url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&q=80', alt: 'Lush mountain valley in summer', credit: 'Jake Melara' },
+  5:  { url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80', alt: 'Sunny beach with turquoise water', credit: 'Oleg Ivanov' },
+  6:  { url: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1200&q=80', alt: 'Palm trees and tropical sea', credit: 'Asad Photo Maldives' },
+  7:  { url: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80', alt: 'Golden wheat field at sunset', credit: 'Ales Krivec' },
+  8:  { url: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80', alt: 'Autumn forest with orange leaves', credit: 'Luke Stackpoole' },
+  9:  { url: 'https://images.unsplash.com/photo-1476820865390-c52aeebb9891?w=1200&q=80', alt: 'Falling autumn leaves', credit: 'Chris Lawton' },
+  10: { url: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=80', alt: 'Foggy forest in late autumn', credit: 'Annie Spratt' },
+  11: { url: 'https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?w=1200&q=80', alt: 'Snowy winter landscape with trees', credit: 'Aaron Burden' },
+};
 
 export function getMonthImage(month: number) {
   return MONTH_IMAGES[month] || MONTH_IMAGES[0]

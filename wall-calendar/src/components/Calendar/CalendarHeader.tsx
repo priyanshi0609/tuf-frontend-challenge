@@ -27,7 +27,7 @@ export default function CalendarHeader({
       <div className="flex items-center gap-1">
         <button
           onClick={onPrev}
-          className="w-8 h-8 flex items-center justify-center rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-[#1AACEC] transition-all active:scale-90"
+          className="w-10 h-10 flex items-center justify-center rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-[#1AACEC] transition-all active:scale-90"
           aria-label="Previous month"
         >
           <ChevronLeft size={18} />
@@ -50,7 +50,7 @@ export default function CalendarHeader({
 
       {/* Month label */}
       <div className="text-center">
-        <p className="text-sm font-semibold text-gray-700 dark:text-gray-200 font-display">
+        <p className="text-md font-semibold text-gray-700 dark:text-gray-200 font-display">
           {format(currentDate, 'MMMM yyyy')}
         </p>
       </div>

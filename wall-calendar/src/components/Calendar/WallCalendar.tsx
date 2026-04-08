@@ -99,14 +99,6 @@ export default function WallCalendar() {
 
   return (
     <div className="w-full max-w-3xl mx-auto">
-      {/* Hanging wire / hook visual above */}
-      <div className="flex justify-center mb-1">
-        <div className="flex flex-col items-center">
-          <div className="w-px h-6 bg-gray-400 dark:bg-gray-600" />
-          <div className="w-4 h-4 border-2 border-gray-500 dark:border-gray-500 rounded-full bg-gray-300 dark:bg-gray-700" />
-        </div>
-      </div>
-
       {/* Calendar card */}
       <div
         className={`
