@@ -9,9 +9,9 @@ Built to showcase frontend skills like UI design, state management, and user int
 👉 https://tuf-frontend-challenge.vercel.app/
 
 ---
-## 🧩 Features
+## Features
 
-### 🎨 Wall Calendar Aesthetic
+### 1. Wall Calendar Aesthetic
 - Inspired by real-world wall calendars
 - Hero image dynamically changes with month
 - Clean layout with strong visual hierarchy
@@ -19,7 +19,7 @@ Built to showcase frontend skills like UI design, state management, and user int
 
 ---
 
-### 📆 Day Range Selection
+### 2. Day Range Selection
 - Select **start date → end date**
 - Visual feedback:
   - Start date
@@ -30,7 +30,7 @@ Built to showcase frontend skills like UI design, state management, and user int
 
 ---
 
-### 📝 Integrated Notes Section
+### 3. Integrated Notes Section
 - Add notes for:
   - Specific dates
   - Selected date ranges
@@ -39,7 +39,7 @@ Built to showcase frontend skills like UI design, state management, and user int
 
 ---
 
-### 🎉 Holiday Indicators
+### 4. Holiday Indicators
 - Important holidays are:
   - Marked with visual indicators (dot)
   - Displayed on hover (tooltip)
@@ -47,13 +47,13 @@ Built to showcase frontend skills like UI design, state management, and user int
 
 ---
 
-### 🌗 Theme Support
+### 5. Theme Support
 - Light / Dark mode support
 - Theme persisted using localStorage
 
 ---
 
-### 📱 Fully Responsive Design
+### 6. Fully Responsive Design
 
 #### 💻 Desktop
 - Side-by-side layout:
@@ -79,7 +79,7 @@ Built to showcase frontend skills like UI design, state management, and user int
 
 ---
 
-## 🧠 Key Implementation Details
+## Key Implementation Details
 
 ### 📌 Calendar Logic
 - Custom calendar grid generation
@@ -136,7 +136,7 @@ npm run dev
 http://localhost:3000
 ```
 
-## ✨ Additional Enhancements
+## Additional Enhancements
 - Smooth animations (page flip, hover states)
 - Holiday highlighting
 - Custom theme colors
